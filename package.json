@@ -1,6 +1,6 @@
 {
-	"name": "mariana-sublime",
-	"displayName": "Mariana",
+	"name": "mariana-st",
+	"displayName": "mariana-sublime",
 	"description": "I already tried the other ones",
 	"icon": "thumbnails/sublime.png",
 	"galleryBanner": {
@@ -8,41 +8,23 @@
 		"theme": "dark"
 	},
 	"markdown": "github",
-	"badges": [
-		{
-			"url": "https://img.shields.io/visual-studio-marketplace/v/mightbesimon.mariana-sublime?label=",
-			"href": "https://github.com/mightbesimon/vscode-mariana/tags",
-			"description": "version"
-		},
-		{
-			"url": "https://img.shields.io/vscode-marketplace/i/mightbesimon.mariana-sublime?color=white&label=&logo=visualstudiocode&logoColor=blue",
-			"href": "https://mightbesimon.com",
-			"description": "downloads"
-		},
-		{
-			"url": "https://img.shields.io/badge/-Sponsor_Us_-%23d73a49",
-			"href": "https://github.com/sponsors/mightbesimon",
-			"description": "sponsor"
-		},
-		{
-			"url": "https://github.com/mightbesimon/vscode-mariana/actions/workflows/publish.yml/badge.svg",
-			"href": "https://github.com/mightbesimon/vscode-mariana",
-			"description": "publish"
-		}
-	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mightbesimon/vscode-mariana"
+		"url": "https://github.com/zwyyy456/vscode-mariana"
 	},
-	"sponsor": {
-		"url": "https://github.com/sponsors/mightbesimon"
-	},
-	"author": "mightbesimon",
-	"publisher": "mightbesimon",
-	"version": "0.99.99",
+	"author": "zwyyy456",
+	"publisher": "zwyyy456",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.64.0"
 	},
+	"files": [
+		"themes/",
+		"thumbnails/",
+		"README.md",
+		"LICENSE.md",
+		"CHANGELOG.md"
+	],
 	"categories": [
 		"Themes"
 	],

@@ -1,51 +1,58 @@
-'''	Copyright © 2022 mightbesimon.com
-	All rights reserved.
+"""Copyright © 2022 mightbesimon.com
+All rights reserved.
 
-	Material belonging to others may have been
-	used under Creative Commons Licence or with
-	explicit or implicit permission.
-'''
+Material belonging to others may have been
+used under Creative Commons Licence or with
+explicit or implicit permission.
+"""
 
-from lifehacks.colour import Colour
-from lifehacks.colour.palette import Mariana
-from lifehacks.metaclasses import enum
+class ThemeColors:
+    def __init__(self, file_in: str) -> None:
+        self.colors = {
+            "BLACK": "#000000",
+            "BLUE": "#6699cc",
+            "CORAL": "#f97b58",
+            "DARK_0": "#181c20",
+            "DARK_1": "#1c2126",
+            "DARK_2": "#293038",
+            "DARK_3": "#1e1e1e",
+            "LIGHT_0": "#a6adb9",
+            "LIGHT_1": "#d8dee9",
+            "MARIANA": "#303841",
+            "MEDIUM_0": "#303841",
+            "MEDIUM_1": "#576675bf",
+            "MEDIUM_2": "#627384",
+            "MINT": "#99c794",
+            "MINT_1": "#14421255",
+            "CORAL_1": "#750b0b55",
+            "ORANGE": "#f9ae58",
+            "PURPLE": "#c695c6",
+            "RED": "#ec5f66",
+            "SHADOW": "#00000080",
+            "TEAL": "#5fb4b4",
+            "TRANSPARENT": "#00000000",
+            "WHITE": "#ffffff",
+            "YELLOW": "#fac761",
+        }
+        self.file_in = file_in
 
+    def export_theme(self, file_out: str):
+        with open(self.file_in, "r") as f:
+            content = f.read()
+            content = content.replace(": ", ":").replace("\t", "").replace("\n", "")
 
-class ThemeReference:
-
-	def __init__(self, filename:str) -> None:
-		self.filename = filename
-
-	def use_themes(self, *themes:enum[Colour]) -> 'ThemeReference':
-		self.themes = themes
-		return self
-
-	def export_color_theme(self, filename:str) -> 'ThemeReference':
-		with open(self.filename, 'r') as file:
-			content = file.read()
-
-		content = ( content
-			.replace(': ', ':')
-			.replace('\t', '' )
-			.replace('\n', '' )
-		)
-
-		for theme in self.themes:
-			for name, colour in theme:
-				content = content.replace(name, colour.to_hex())
-
-		with open(filename, 'w') as file:
-			file.write(content)
-
-		return self
+        for name, color in self.colors.items():
+            content = content.replace(name, color)
+        with open(file_out, "w") as f:
+            f.write(content)
 
 
 ################################################################
 #######                 MAIN STARTS HERE                 #######
 ################################################################
-if __name__ == '__main__':\
-(
-	ThemeReference(filename='themes/mariana-reference.json')
-		.use_themes(Mariana)
-		.export_color_theme(filename='themes/mariana-color-theme.json')
-)
+if __name__ == "__main__":
+    (
+        ThemeColors(file_in="themes/mariana-reference.json").export_theme(
+            file_out="themes/mariana-color-theme.json"
+        )
+    )
