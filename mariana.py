@@ -23,8 +23,8 @@ class ThemeColors:
             "MEDIUM_1": "#576675bf",
             "MEDIUM_2": "#627384",
             "MINT": "#99c794",
-            "MINT_1": "#14421255",
-            "CORAL_1": "#750b0b55",
+            "MINT_1": "#99c79433",
+            "CORAL_1": "#f97b5833",
             "ORANGE": "#f9ae58",
             "PURPLE": "#c695c6",
             "RED": "#ec5f66",
@@ -41,8 +41,9 @@ class ThemeColors:
             content = f.read()
             content = content.replace(": ", ":").replace("\t", "").replace("\n", "")
 
-        for name, color in self.colors.items():
-            content = content.replace(name, color)
+        # Replace longer keys first to avoid partial replacements (e.g. MINT vs MINT_1).
+        for name in sorted(self.colors, key=len, reverse=True):
+            content = content.replace(name, self.colors[name])
         with open(file_out, "w") as f:
             f.write(content)
 
